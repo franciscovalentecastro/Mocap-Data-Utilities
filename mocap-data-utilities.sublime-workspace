@@ -1,0 +1,583 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ave",
+				"averageStrideLength"
+			],
+			[
+				"step",
+				"stepFrames"
+			],
+			[
+				"stride",
+				"strideLengthSum"
+			],
+			[
+				"str",
+				"strideLength"
+			],
+			[
+				"fra",
+				"frameIndex"
+			],
+			[
+				"la",
+				"lastStepPosition"
+			],
+			[
+				"ste",
+				"stepFrames"
+			],
+			[
+				"st",
+				"startStep"
+			],
+			[
+				"frame",
+				"frames"
+			],
+			[
+				"min",
+				"min_height"
+			],
+			[
+				"joi",
+				"joint_height"
+			],
+			[
+				"se",
+				"setEndSiteName"
+			],
+			[
+				"chi",
+				"child"
+			],
+			[
+				"ch",
+				"child"
+			],
+			[
+				"root",
+				"root"
+			],
+			[
+				"joint",
+				"joint_name"
+			],
+			[
+				"mode",
+				"model_position"
+			],
+			[
+				"join",
+				"jointPosition"
+			],
+			[
+				"fr",
+				"frame_index"
+			],
+			[
+				"pa",
+				"parent_transformation"
+			],
+			[
+				"cu",
+				"current_node"
+			],
+			[
+				"cha",
+				"channel_position"
+			],
+			[
+				"j",
+				"jointSpeed"
+			],
+			[
+				"pr",
+				"previous_position"
+			],
+			[
+				"mo",
+				"model_position"
+			],
+			[
+				"ca",
+				"calculateFrame"
+			],
+			[
+				"model",
+				"modelPosition"
+			],
+			[
+				"z",
+				"z_rotation"
+			],
+			[
+				"y",
+				"y_rotation"
+			],
+			[
+				"matr",
+				"matrix"
+			],
+			[
+				"cal",
+				"calculateNodePosition"
+			],
+			[
+				"tr",
+				"transformation"
+			],
+			[
+				"chann",
+				"channel"
+			],
+			[
+				"x_",
+				"x_position"
+			],
+			[
+				"x",
+				"x_rotation"
+			],
+			[
+				"c",
+				"channels"
+			],
+			[
+				"jo",
+				"joint_position"
+			],
+			[
+				"tra",
+				"trans_y"
+			],
+			[
+				"r",
+				"rotationAxis_z"
+			],
+			[
+				"R",
+				"rotationAxis_y"
+			],
+			[
+				"RO",
+				"rotationAxis_x"
+			],
+			[
+				"rot",
+				"rotation"
+			],
+			[
+				"angle",
+				"angle_x"
+			],
+			[
+				"num",
+				"numberOfFrames"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"node",
+				"node"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "movement.py",
+			"settings":
+			{
+				"buffer_size": 2704,
+				"line_ending": "Windows",
+				"name": "\"\"\" Este modulo consistira de funciones referentes"
+			}
+		},
+		{
+			"contents": "### Session \n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport bipedal as bip\nbip.strideLength( modelo , \"LeftFoot\" ,  \"LeftToeBase\" , \"LeftToeBase_EndSite\" )\n\nimport movement as mov\nmov.jointLowestFrames( modelo , \"LeftFoot\" , .5 )\n\nmov.plotJointCoordinate( modelo , [ \"LeftFoot\" , \"LeftToeBase\" , \"LeftToeBase_EndSite\" ] , 1 ) \n\n\n\n",
+			"settings":
+			{
+				"buffer_size": 397,
+				"line_ending": "Unix",
+				"name": "### Session"
+			}
+		},
+		{
+			"file": "bvh.py",
+			"settings":
+			{
+				"buffer_size": 9449,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "model.py",
+			"settings":
+			{
+				"buffer_size": 3945,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "geometry.py",
+			"settings":
+			{
+				"buffer_size": 1679,
+				"line_ending": "Windows",
+				"name": "\"\"\" This file contains functions for 3D geometry \""
+			}
+		},
+		{
+			"file": "bipedal.py",
+			"settings":
+			{
+				"buffer_size": 2689,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 219.0,
+		"selected_items":
+		[
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 501.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/49/49_01_ignoreFirstFrame.bvh",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/05/05_01__ignoreFirstFrame.bvh",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01_ignoreFirstFrame.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/02/02_01.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/asfamc.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/bvh.py",
+		"/C/Users/Test/Downloads/bvhplay-1.00-sourcecode/bvhplay.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/bvhplay/__init__.py",
+		"/C/Users/Test/Downloads/bvhplay-1.00-sourcecode/README",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/test.py",
+		"/C/Users/Test/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md",
+		"/C/Users/Test/Downloads/02.asf",
+		"/C/Users/Test/Downloads/cgkit-2.0.0.win32-py3.3/PLATLIB/cgkit/bvh.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/Example1.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/scatterPlot.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/Male1_B3_Walk.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/data.py",
+		"/C/Users/Test/Downloads/500 Days Of Summer.2009.720p.BDRip.x264-VLiS/geometry.h",
+		"/C/Python33/Lib/site-packages/cgkit/bvh.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/Example1.bvh.txt",
+		"/C/Users/Test/Downloads/cgkit-2.0.0-py3k/cgkit-2.0.0/README.txt"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"children",
+			"calculateNodePosition",
+			"end site",
+			"calculateFrame",
+			"self",
+			"channel_position",
+			"self.channels",
+			"numch"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "movement.py",
+					"settings":
+					{
+						"buffer_size": 2704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								156,
+								156
+							]
+						],
+						"settings":
+						{
+							"auto_name": "\"\"\" Este modulo consistira de funciones referentes",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"settings":
+					{
+						"buffer_size": 397,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								298,
+								298
+							]
+						],
+						"settings":
+						{
+							"auto_name": "### Session",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "bvh.py",
+					"settings":
+					{
+						"buffer_size": 9449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9449,
+								9449
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4335.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "model.py",
+					"settings":
+					{
+						"buffer_size": 3945,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								177,
+								177
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "geometry.py",
+					"settings":
+					{
+						"buffer_size": 1679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								272,
+								272
+							]
+						],
+						"settings":
+						{
+							"auto_name": "\"\"\" This file contains functions for 3D geometry \"",
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "bipedal.py",
+					"settings":
+					{
+						"buffer_size": 2689,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1770,
+								1770
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 510.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 201.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/Test/Documents/Programming/Data Structures/data-structures.py"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 151.0,
+	"status_bar_visible": true
+}
