@@ -103,6 +103,8 @@ class BVHReader:
         self.onHierarchy(self._root)
         self.readMotion()
 
+        self.setEndSiteName( self._root )
+ 
     # readMotion
     def readMotion(self):
         """Read the motion samples.
@@ -277,4 +279,11 @@ class BVHReader:
         a = s.split()
         self.tokenlist = a
 
-    
+    def setEndSiteName( self , root ):
+        """ Sets the 'End Site' nodes name to 'ParentName-End Site' """
+        for child in root.children :
+            if( child.name == 'End Site' ):
+                child.name = root.name + "_EndSite"
+            else:
+                self.setEndSiteName( child )
+

@@ -43,14 +43,14 @@ class Model( bvh.BVHReader ):
             Add frame to frame list."""
         self.frames.append( values )     
 
-    def calculateFrame( self , index ):
+    def setFrame( self , frame_index ):
 
         """ Calculate the positions of every joint in the 3D model in frame with number index. """
         
         self.channel_position = 0       ## Set index for traversing channels in frame
-        self.calculateNodePosition( np.matrix(np.identity(4), copy=False ), self._root , self.frames[index] )
+        self.getNodePosition( np.matrix(np.identity(4), copy=False ), self._root , self.frames[ frame_index ] )
 
-    def calculateNodePosition( self , parent_transformation , current_node , frameChannels ):
+    def getNodePosition( self , parent_transformation , current_node , frameChannels ):
         """ Recursive calculation of node position with transformation matrices """
         
         ## Initialize channel variables
@@ -84,24 +84,6 @@ class Model( bvh.BVHReader ):
 
         ### Recursively call the method with the children of the current node
         for child in current_node.children:
-            self.calculateNodePosition( parent_transformation*transformation , 
-                                                                       child , 
-                                                               frameChannels )
-
-    def calculateJointSpeed( self , joint_name ):
-        """ Calculates the average speed of the joint between each succesive frames. """
-        jointSpeed = []
-
-        ### Initialize model to the position in the first frame
-        self.calculateFrame( 0 )  
-        current_position = self.model_position[ joint_name ]  
-
-        ### Calculate average speed of succesive joint positions
-        for frame_index in range( 1 , self.numberOfFrames ):
-            self.calculateFrame( frame_index )
-            previous_position = current_position
-            current_position = self.model_position[ joint_name ]
-            
-            jointSpeed.append( np.linalg.norm( current_position - previous_position ) / self.frameTime )
-
-        return jointSpeed
+            self.getNodePosition( parent_transformation*transformation , 
+                                                                 child , 
+                                                         frameChannels )
