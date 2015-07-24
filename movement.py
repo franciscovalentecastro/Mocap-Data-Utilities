@@ -9,8 +9,6 @@ import numpy as np
 
 ### 3D plot 
 from mpl_toolkits.mplot3d import Axes3D
-import matplotlib.pyplot as plt
-
 
 def getJointPosition( model , joint_name ):
     """ Calculates the position of the given joint in every frame."""
@@ -23,6 +21,16 @@ def getJointPosition( model , joint_name ):
 
     return jointPosition
 
+def getJointAngle( model , joint_name ):
+    """ Returns a list with the rotation in euler angles of the given joint. """
+    jointAngle = []
+
+    ### Calculate every frame
+    for frame_index in range( model.numberOfFrames ):
+        model.setFrame( frame_index )
+        jointAngle.append( model.model_eulerAngles[ joint_name ] )
+
+    return jointAngle
 def getJointSpeed( model , joint_name ):
         """ Calculates the average speed of the joint between each succesive frames. """
         jointSpeed = []
@@ -37,11 +45,24 @@ def getJointSpeed( model , joint_name ):
             previous_position = current_position
             current_position = model.model_position[ joint_name ]
             
-            jointSpeed.append( np.linalg.norm( current_position - previous_position ) / self.frameTime )
+            jointSpeed.append( np.linalg.norm( current_position - previous_position ) / model.frameTime )
 
         return jointSpeed
 
-def plotJointCoordinate( model , joint_name , coordinate ):
+def getJointAcceleration( model , joint_name ):
+    """ Calculates the acceleration of the joint between each succesive frames. """
+    jointAcceleration = []
+
+    jointSpeed = getJointSpeed( model , joint_name )
+
+    ### Calculate average accelearation from succesive joint speed
+    for index in range( 1 , len( jointSpeed ) ):
+
+        jointAcceleration.append( ( jointSpeed[ i ] - jointSpeed[ -1 ] ) / model.frameTime  )
+
+    return jointAcceleration
+
+def plotJointPositionCoordinate( model , joint_name , coordinate ):
     
     """ Plot the given coordinate of the joint as a function of the frames"""
 
@@ -59,6 +80,32 @@ def plotJointCoordinate( model , joint_name , coordinate ):
 
         ### Generate coordinate value array
         plotCoordinate = [ position[ coordinate,0 ] for position in jointPositionList ]
+        axis = [ x for x in range( 0 , model.numberOfFrames ) ]
+
+        ### Plot the given coordinate
+        plt.plot( axis , plotCoordinate , 'ro' , color = next(colors) )
+    
+    ### Show plot
+    plt.show()
+
+def plotJointAngleCoordinate( model , joint_name , coordinate ):
+    
+    """ Plot the given coordinate of the joint as a function of the frames"""
+
+    ### Check if argument joint_name is a string , convert to string
+    if( type(joint_name) is str ):
+        joint_name = [ joint_name ]
+
+    ### Set color cycle for the plots
+    colors = itertools.cycle(['r', 'g', 'b', 'y'])
+
+    for joint in joint_name:
+
+        ### Get corrdinates of a joint
+        jointAngleList = getJointAngle( model , joint )
+
+        ### Generate coordinate value array
+        plotCoordinate = [ angle[ coordinate ] for angle in jointAngleList ]
         axis = [ x for x in range( 0 , model.numberOfFrames ) ]
 
         ### Plot the given coordinate
@@ -115,4 +162,39 @@ def plotJointLocalWorkspace( model , joint_name ):
 
     plt.show()
 
+def plotFrame( model , frameNumber ):
+    """ Plots a frame of the model """
 
+    ## Set frame
+    model.setFrame( frameNumber )
+
+    ## Get every joint coordinates in the frame
+    x = [ model.model_position[ key ][ 0 , 0 ] for key in model.model_position ] 
+    y = [ model.model_position[ key ][ 1 , 0 ] for key in model.model_position ]
+    z = [ model.model_position[ key ][ 2 , 0 ] for key in model.model_position ]
+
+    ## 
+
+    ## Plot model
+    fig = plt.figure( figsize=plt.figaspect( 1 ) )
+    ax = fig.add_subplot( 111 , projection='3d' )
+    ax.set_aspect('equal')
+
+    ax.scatter( x , y , z )
+
+    ax.set_xlabel('X Label')
+    ax.set_ylabel('Y Label')
+    ax.set_zlabel('Z Label')
+
+    ## Set bounding box for the plot
+    max_range = max( [ max( x ) - min( x ), max( y ) - min( y ) , max( z ) - min( z ) ] ) / 2.0
+
+    mean_x = np.mean( x )
+    mean_y = np.mean( y )
+    mean_z = np.mean( z )
+    
+    ax.set_xlim( mean_x - max_range, mean_x + max_range )
+    ax.set_ylim( mean_y - max_range, mean_y + max_range )
+    ax.set_zlim( mean_z - max_range, mean_z + max_range )
+    
+    plt.show()

@@ -15,7 +15,8 @@ class Model( bvh.BVHReader ):
             numberOfFrames : The number of frames in the animation from the file
             frames : A list of the frames. Each frames has a list of values that takes each channel.
             frameTime : Indicates the sampling rate of the data.
-            model_position : A dictionary that saves the global position of a joint with its name as the key
+            model_position : A dictionary that saves the global position in the current frame of a joint with its name as the key
+            model_eulerAngles : A dictionary that saves the euler angles int the current frame of each joint with its name as the key
 
         Inherited Attributes:
             filename : Path to the file
@@ -23,6 +24,7 @@ class Model( bvh.BVHReader ):
             _numchannels: The number of channels in the model
             nodeByName : A dictionary for accesing the model nodes by name
     """
+
     def __init__( self , filename ):
         """ Initializes the values of the attributes """
         bvh.BVHReader.__init__( self , filename )
@@ -32,6 +34,7 @@ class Model( bvh.BVHReader ):
         self.frameTime = 0 
     
         self.model_position = {}
+        self.model_eulerAngles = {}
 
     def getJointByName( self , name ) :
         """ Returns a joint in the model by its name """
@@ -99,6 +102,9 @@ class Model( bvh.BVHReader ):
 
         ### Save position to the dictionary
         self.model_position[ current_node.name ] = parent_transformation*current_node.transformation*np.matrix([[0],[0],[0],[1]])
+
+        ### Save euler angles to the dictionary 
+        self.model_eulerAngles[ current_node.name ] = ( x_rotation , y_rotation , z_rotation )
 
         ### Recursively call the method with the children of the current node
         for child in current_node.children:
