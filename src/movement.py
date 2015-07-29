@@ -58,7 +58,7 @@ def getJointAcceleration( model , joint_name ):
     ### Calculate average accelearation from succesive joint speed
     for index in range( 1 , len( jointSpeed ) ):
 
-        jointAcceleration.append( ( jointSpeed[ i ] - jointSpeed[ -1 ] ) / model.frameTime  )
+        jointAcceleration.append( ( jointSpeed[ index ] - jointSpeed[ index - 1 ] ) / model.frameTime  )
 
     return jointAcceleration
 
@@ -133,12 +133,14 @@ def jointLowestFrames( model , joint_name , error ):
 
     return frames
 
-def plotJointLocalWorkspace( model , joint_name ):
-    """ 3D plot of the angles of a joint in the unit sphere """
-
+def getJointLocalWorkspace( model , joint_name ):
+    """ Returns the observed positions of the joint in the local workspace. """
+    
+    ### Get joint node
     joint = model.getJointByName( joint_name )
 
-    x ,  y , z = [] , [] , []
+    ### Local workspace positions
+    jointLocalWorkspace = []
 
     ### Calculate every frame
     for frame_index in range( model.numberOfFrames ):
@@ -146,9 +148,19 @@ def plotJointLocalWorkspace( model , joint_name ):
         
         local_position = np.matrix( joint.transformation ) * np.matrix( [ [0] ,[0] ,[0] ,[1] ] )
 
-        x.append( local_position[ 0,0 ] )
-        y.append( local_position[ 1,0 ] )
-        z.append( local_position[ 2,0 ] )
+        jointLocalWorkspace.append( [ local_position[0,0] , local_position[1,0] , local_position[2,0] ] )
+
+    return jointLocalWorkspace
+
+
+def plotJointLocalWorkspace( model , joint_name ):
+    """ 3D plot of the angles of a joint in the unit sphere """
+
+    jointLocalWorkspace = getJointLocalWorkspace( model , joint_name )
+    
+    x = [ element[ 0 ] for element in jointLocalWorkspace ]
+    y = [ element[ 1 ] for element in jointLocalWorkspace ]
+    z = [ element[ 2 ] for element in jointLocalWorkspace ]
 
     ### 3D plot the positions
     fig = plt.figure()

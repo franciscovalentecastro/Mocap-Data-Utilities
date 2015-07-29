@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """ Este modulo consistira de funciones referentes 
     al manejo de datos de movimiento """
     

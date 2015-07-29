@@ -1,0 +1,532 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ax",
+				"axAcceleration"
+			],
+			[
+				"s",
+				"speed"
+			],
+			[
+				"get",
+				"getJointSpeed"
+			],
+			[
+				"min",
+				"minY"
+			],
+			[
+				"max",
+				"maxX"
+			],
+			[
+				"joi",
+				"joint"
+			],
+			[
+				"loca",
+				"local_position"
+			],
+			[
+				"frm",
+				"frameTime"
+			],
+			[
+				"ma",
+				"maximaIndex"
+			],
+			[
+				"aut",
+				"autoCorrelation"
+			],
+			[
+				"model",
+				"model_position"
+			],
+			[
+				"fra",
+				"frameNumber"
+			],
+			[
+				"set",
+				"setFrame"
+			],
+			[
+				"join",
+				"joint_name"
+			],
+			[
+				"z",
+				"z_rotation"
+			],
+			[
+				"x",
+				"x_rotation"
+			],
+			[
+				"model_",
+				"model_eulerAngles"
+			],
+			[
+				"ro",
+				"rotation"
+			],
+			[
+				"x_t",
+				"x_position"
+			],
+			[
+				"tr",
+				"translationMatrix"
+			],
+			[
+				"x_",
+				"x_rotation"
+			],
+			[
+				"lo",
+				"local_position"
+			],
+			[
+				"mode",
+				"model"
+			],
+			[
+				"_",
+				"_root"
+			],
+			[
+				"se",
+				"setNodeByName"
+			],
+			[
+				"chi",
+				"children"
+			],
+			[
+				"node",
+				"nodeByName"
+			],
+			[
+				"tra",
+				"transformation"
+			],
+			[
+				"rot",
+				"rotationAxis_x"
+			],
+			[
+				"curre",
+				"current_node"
+			],
+			[
+				"ave",
+				"averageStrideLength"
+			],
+			[
+				"step",
+				"stepFrames"
+			],
+			[
+				"stride",
+				"strideLengthSum"
+			],
+			[
+				"str",
+				"strideLength"
+			],
+			[
+				"la",
+				"lastStepPosition"
+			],
+			[
+				"ste",
+				"stepFrames"
+			],
+			[
+				"st",
+				"startStep"
+			],
+			[
+				"frame",
+				"frames"
+			],
+			[
+				"ch",
+				"child"
+			],
+			[
+				"root",
+				"root"
+			],
+			[
+				"joint",
+				"joint_name"
+			],
+			[
+				"fr",
+				"frame_index"
+			],
+			[
+				"pa",
+				"parent_transformation"
+			],
+			[
+				"cu",
+				"current_node"
+			],
+			[
+				"cha",
+				"channel_position"
+			],
+			[
+				"j",
+				"jointSpeed"
+			],
+			[
+				"pr",
+				"previous_position"
+			],
+			[
+				"mo",
+				"model_position"
+			],
+			[
+				"ca",
+				"calculateFrame"
+			],
+			[
+				"y",
+				"y_rotation"
+			],
+			[
+				"matr",
+				"matrix"
+			],
+			[
+				"cal",
+				"calculateNodePosition"
+			],
+			[
+				"chann",
+				"channel"
+			],
+			[
+				"c",
+				"channels"
+			],
+			[
+				"jo",
+				"joint_position"
+			],
+			[
+				"r",
+				"rotationAxis_z"
+			],
+			[
+				"R",
+				"rotationAxis_y"
+			],
+			[
+				"RO",
+				"rotationAxis_x"
+			],
+			[
+				"angle",
+				"angle_x"
+			],
+			[
+				"num",
+				"numberOfFrames"
+			],
+			[
+				"__",
+				"__init__"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "bipedal.py",
+			"settings":
+			{
+				"buffer_size": 2689,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "model.py",
+			"settings":
+			{
+				"buffer_size": 5136,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Python/Python.sublime-build",
+	"command_palette":
+	{
+		"height": 219.0,
+		"selected_items":
+		[
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 501.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bipedal.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/Python3/bipedal.py",
+		"/home/francisco/Documents/Programming/Python3/model.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/Python3/model.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/data.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/visualization.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/movement.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/session_1.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/model.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvhplay/skeleton.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvhplay/camera.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvhplay/transport.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvhplay/geo.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvhplay/bvhplay.py",
+		"/home/francisco/Documents/Programming/BVwHacker/bvwhacker_base.py",
+		"/home/francisco/Documents/Programming/BVwHacker/bvwhacker.py",
+		"/home/francisco/Documents/Programming/BVwHacker/README.md",
+		"/usr/lib/python3.4/site-packages/vispy/plot/__init__.py",
+		"/usr/lib/python3.4/site-packages/vispy/plot/fig.py",
+		"/home/francisco/Downloads/curve_fitting.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01.bvh",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/geometry.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvh.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/Example1.bvh",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/49/49_01_ignoreFirstFrame.bvh",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/05/05_01__ignoreFirstFrame.bvh",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01_ignoreFirstFrame.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/02/02_01.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/asfamc.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/bvh.py",
+		"/C/Users/Test/Downloads/bvhplay-1.00-sourcecode/bvhplay.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/bvhplay/__init__.py",
+		"/C/Users/Test/Downloads/bvhplay-1.00-sourcecode/README",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/test.py",
+		"/C/Users/Test/AppData/Roaming/Sublime Text 3/Packages/Anaconda/README.md",
+		"/C/Users/Test/Downloads/02.asf",
+		"/C/Users/Test/Downloads/cgkit-2.0.0.win32-py3.3/PLATLIB/cgkit/bvh.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/Example1.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/scatterPlot.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/Male1_B3_Walk.bvh",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/data.py",
+		"/C/Users/Test/Downloads/500 Days Of Summer.2009.720p.BDRip.x264-VLiS/geometry.h",
+		"/C/Python33/Lib/site-packages/cgkit/bvh.py",
+		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/Example1.bvh.txt",
+		"/C/Users/Test/Downloads/cgkit-2.0.0-py3k/cgkit-2.0.0/README.txt"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"mycanvas",
+			"myviewport",
+			"draw",
+			"screenedge",
+			"redraw()",
+			"redraw",
+			"mytransport",
+			"sig",
+			"channel",
+			"x",
+			"children",
+			"calculateNodePosition",
+			"end site",
+			"calculateFrame",
+			"self",
+			"channel_position",
+			"self.channels",
+			"numch"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "bipedal.py",
+					"settings":
+					{
+						"buffer_size": 2689,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "model.py",
+					"settings":
+					{
+						"buffer_size": 5136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 201.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/Test/Documents/Programming/Data Structures/data-structures.py"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 151.0,
+	"status_bar_visible": true
+}
