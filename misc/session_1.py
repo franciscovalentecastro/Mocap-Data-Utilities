@@ -97,9 +97,39 @@ data = np.array( data )
 dt.quadraticSurfaceFit( data )
 
 #########################
+from mayavi import mlab
+import numpy as np
 import model as m
+
 modelo =  m.Model( "../sample-mocap-data//05//05_01.bvh" )
 modelo.read()
 
+## Set frame
+modelo.setFrame( 0 )
+
+## Get every joint coordinates in the frame
+x = np.array( [ modelo.model_position[ key ][ 0 , 0 ] for key in modelo.model_position ] ) 
+y = np.array( [ modelo.model_position[ key ][ 1 , 0 ] for key in modelo.model_position ] )
+z = np.array( [ modelo.model_position[ key ][ 2 , 0 ] for key in modelo.model_position ] )
+
+s = mlab.points3d( x , y , z , color=(0 , 0 ,0), scale_factor=.5 )
+
+###############################
+import numpy as np
+import model as m
 import visualization as vis
-vis.plotFrame( modelo , 0 )
+
+modelo =  m.Model( "../sample-mocap-data//02//02_01.bvh" )
+modelo.read()
+
+vis.plotModel( modelo )
+
+
+###############################
+import numpy as np
+import mayavi.mlab as mlab
+
+y = np.array( 100*[ 100 * [0] ] )
+x , z = np.mgrid[ -50 : 50 , -50 : 50 ]
+
+mlab.points3d( x.flatten() , y.flatten() , z.flatten() )

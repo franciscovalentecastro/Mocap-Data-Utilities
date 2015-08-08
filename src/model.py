@@ -19,6 +19,8 @@ class Model( bvh.BVHReader ):
             frameTime : Indicates the sampling rate of the data.
             model_position : A dictionary that saves the global position in the current frame of a joint with its name as the key
             model_eulerAngles : A dictionary that saves the euler angles int the current frame of each joint with its name as the key
+            model_edges : A list of all the edges between joints in the model in the order given by the a post order 
+            model_frames_position : A list of dictionaries that saves the global position of each joint in every frame 
 
         Inherited Attributes:
             filename : Path to the file
@@ -37,6 +39,7 @@ class Model( bvh.BVHReader ):
     
         self.model_position = {}
         self.model_eulerAngles = {}
+        self.model_edges = []
 
     def getJointByName( self , name ) :
         """ Returns a joint in the model by its name """
@@ -58,6 +61,7 @@ class Model( bvh.BVHReader ):
         """ Calculate the positions of every joint in the 3D model in frame with number index. """
         
         self.channel_position = 0       ## Set index for traversing channels in frame
+        self.model_edges = []           ## Reinitialize edges list
         self.getNodePosition( np.matrix(np.identity(4), copy=False ), self._root , self.frames[ frame_index ] )
 
     def getNodePosition( self , parent_transformation , current_node , frameChannels ):
@@ -97,10 +101,13 @@ class Model( bvh.BVHReader ):
             self.channel_position += 1
         
         ### Add translation to the transformation matrix
-        current_node.transformation = geometry.translationMatrix( x_position , y_position ,z_position ) * current_node.rotation
+        current_node.transformation = geometry.translationMatrix( x_position , y_position ,z_position )
 
         ### Add offset to the transformation matrix        
         current_node.transformation *= geometry.translationMatrix( *current_node.offset )
+
+        ### Add rotation to the transformation matrix
+        current_node.transformation *= current_node.rotation
 
         ### Save position to the dictionary
         self.model_position[ current_node.name ] = parent_transformation*current_node.transformation*np.matrix([[0],[0],[0],[1]])
@@ -110,6 +117,17 @@ class Model( bvh.BVHReader ):
 
         ### Recursively call the method with the children of the current node
         for child in current_node.children:
+
             self.getNodePosition( parent_transformation * current_node.transformation ,
                                                                                 child , 
                                                                         frameChannels )
+
+            ### Generate the edge that joins the parent with it's child
+            if(  ( self.model_position[ current_node.name ] != self.model_position[ child.name ] ).any() ):
+                
+                edge = np.array( [ np.array( self.model_position[ current_node.name ] ).ravel()[:3] ,
+                                   np.array( self.model_position[ child.name ] ).ravel()[:3] ] )
+
+                self.model_edges.append( edge )
+
+

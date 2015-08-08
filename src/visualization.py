@@ -5,66 +5,70 @@
 import numpy as np
 import mayavi.mlab as mlab
 
-# Author: Gael Varoquaux <gael.varoquaux@normalesup.org>
-# Copyright (c) 2008, Enthought, Inc.
-# License: BSD Style.
+from traits.api import HasTraits, Instance, Range, on_trait_change
+from traitsui.api import View, Item, HGroup
+from mayavi.core.ui.api import SceneEditor, MlabSceneModel
 
-
-from numpy import arange, pi, cos, sin
-
-from traits.api import HasTraits, Range, Instance, \
-        on_trait_change
-from traitsui.api import View, Item, Group
-
-from mayavi.core.api import PipelineBase
-from mayavi.core.ui.api import MayaviScene, SceneEditor, \
-                MlabSceneModel
-
-
-dphi = pi/1000.
-phi = arange(0.0, 2*pi + 0.5*dphi, dphi, 'd')
-
-def curve(n_mer, n_long):
-    mu = phi*n_mer
-    x = cos(mu) * (1 + cos(n_long * mu/n_mer)*0.5)
-    y = sin(mu) * (1 + cos(n_long * mu/n_mer)*0.5)
-    z = 0.5 * sin(n_long*mu/n_mer)
-    t = sin(mu)
-    return x, y, z, t
-
-
-class MyModel(HasTraits):
-    n_meridional    = Range(0, 30, 6, )#mode='spinner')
-    n_longitudinal  = Range(0, 30, 11, )#mode='spinner')
-
+class Model_Visualization(HasTraits):
+    "The class that contains the dialog"
+    frame = Range(0, 300, 0)
     scene = Instance(MlabSceneModel, ())
+    plotEdges = []
 
-    plot = Instance(PipelineBase)
+    def __init__(self , model ):
+        HasTraits.__init__(self)
+
+        ## Save model to object
+        self.model = model
+
+        ## Set value range
+        ## self.frame = Range(0, self.model.numberOfFrames - 1 , 0)
+
+        ## Set to initial frame
+        self.model.setFrame( 0 )
+
+        ## Get every joint coordinates in the frame
+        x = np.array( [ self.model.model_position[ key ][ 0 , 0 ] for key in self.model.model_position ] ) 
+        y = np.array( [ self.model.model_position[ key ][ 1 , 0 ] for key in self.model.model_position ] )
+        z = np.array( [ self.model.model_position[ key ][ 2 , 0 ] for key in self.model.model_position ] )
+
+        ## Plot Edges
+        ##for edge in self.model.model_edges:
+        ##    self.plotEdges.append( self.scene.mlab.plot3d( edge[ : , 0 ] , edge[ : , 2 ] , edge[ : , 1 ]  , color=(0 , 0 ,0) ) )
+
+        ## Plot floor
+        s = np.array( 100 * [ 100 * [0] ] )
+        self.scene.mlab.surf( s , representation = 'wireframe' )        
+
+        # Populating our plot
+        self.plotJoints = self.scene.mlab.points3d(x, z, y, color=(0 , 0 ,0), scale_factor=.75 )
+
+    @on_trait_change('frame')
+    def update_plot( self ):
 
 
-    # When the scene is activated, or when the parameters are changed, we
-    # update the plot.
-    @on_trait_change('n_meridional,n_longitudinal,scene.activated')
-    def update_plot(self):
-        x, y, z, t = curve(self.n_meridional, self.n_longitudinal)
-        if self.plot is None:
-            self.plot = self.scene.mlab.plot3d(x, y, z, t,
-                                tube_radius=0.025, colormap='Spectral')
-        else:
-            self.plot.mlab_source.set(x=x, y=y, z=z, scalars=t)
+        ## Set to initial frame
+        self.model.setFrame( self.frame )
 
+        ## Get every joint coordinates in the frame
+        x = np.array( [ self.model.model_position[ key ][ 0 , 0 ] for key in self.model.model_position ] ) 
+        y = np.array( [ self.model.model_position[ key ][ 1 , 0 ] for key in self.model.model_position ] )
+        z = np.array( [ self.model.model_position[ key ][ 2 , 0 ] for key in self.model.model_position ] )
+        
+        ## Set surce to new joint positions
+        self.plotJoints.mlab_source.set( x=x, y=z, z=y )
 
-    # The layout of the dialog created
-    view = View(Item('scene', editor=SceneEditor(scene_class=MayaviScene),
-                     height=250, width=300, show_label=False),
-                Group(
-                        '_', 'n_meridional', 'n_longitudinal',
-                     ),
-                resizable=True,
-                )
+        ## Set source to new edge posistion
+        ##for index , edge in enumerate( self.model.model_edges ):
+        ##    self.plotEdges[ index ].mlab_source.set( x = edge[ : , 0 ] , y = edge[ : , 2 ] , z = edge[ : , 1 ] )
 
-my_model = MyModel()
-my_model.configure_traits()
+    # Describe the dialog
+    view = View( Item('scene', height=300, show_label=False,
+                   editor=SceneEditor() ), HGroup('frame'), resizable=True )
+
+def plotModel( model ):
+    """ Animates the model """
+    Model_Visualization( model ).configure_traits()
 
 def plotFrame( model , frameNumber ):
     """ Plots a frame of the model """
@@ -78,6 +82,8 @@ def plotFrame( model , frameNumber ):
     z = np.array( [ model.model_position[ key ][ 2 , 0 ] for key in model.model_position ] )
 
     mlab.points3d( x , y , z , color=(0 , 0 ,0), scale_factor=.5 )
+
+    
 
 
  
