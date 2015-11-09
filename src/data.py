@@ -1,5 +1,5 @@
 """ This file contains functions for analysing and studying the data
-    obtained from the MOCAP information obtained from the model"""\
+    obtained from the MOCAP information obtained from the model"""
 
 import numpy as np
 import scipy.signal

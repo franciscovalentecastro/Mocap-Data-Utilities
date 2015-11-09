@@ -268,10 +268,13 @@
 	"buffers":
 	[
 		{
+			"contents": "# -*- coding: utf-8 -*-\n\n\"\"\" Este modulo consistira de funciones referentes al estudio del movimiento \n    de un modelo jerarquico en 3D ( marioneta ). Específicamente al movimiento\n    de bipedos ó bipedestración y sus movimientos de locomoción. \"\"\"\n\nimport model\nimport movement\nimport numpy as np\n\n\ndef footOnFloorFrames( model , heel_joint ,  toeBase_joint , end_joint ):\n    \"\"\" This function returns a list of the frames where the foot is on the ground.\"\"\"\n    \"\"\" Parameters : \n            model : An instance of the class model.Model .\n            heel_joint : A string with the name of the joint that resembles the 'Heel' of a chosen foot .\n            oeBase_joint : A string with the name of the joint that resembles the 'Toe Base' of a chosen foot .\n            end_joint : A string with the name of the joint that resembles the 'End' of a chosen foot .\n    \"\"\"\n\n\n    frames = movement.jointLowestFrames( model , heel_joint , 1.1 )\n\n    return frames\n\ndef strideLength( model , heel_joint ,  toeBase_joint , end_joint ):\n    \"\"\" This function returns the average stride length of the walk animation of the model\"\"\"\n    \"\"\" Parameters : \n            model : An instance of the class model.Model .\n            heel_joint : A string with the name of the joint that resembles the 'Heel' of a chosen foot .\n            oeBase_joint : A string with the name of the joint that resembles the 'Toe Base' of a chosen foot .\n            end_joint : A string with the name of the joint that resembles the 'End' of a chosen foot .\n    \"\"\"\n\n    frames = footOnFloorFrames( model , heel_joint ,  toeBase_joint , end_joint )\n\n    ### Check if frames size is larger than 1\n    if( len( frames ) <= 1  ):\n        return False\n\n    ### Find the frames in the middle of a step ( foot on the floor )\n    \n    stepFrames = []\n\n    startStep = frames[ 0 ]\n\n    for index in range( 1 , len( frames ) ):\n\n        if( abs( frames[ index ] - frames[ index - 1 ] ) > 1 ):\n            \n            endStep = frames[ index - 1 ]\n\n            stepFrames.append( int( ( endStep + startStep ) / 2 ) )\n\n            startStep = frames[ index ]\n\n\n    ### Calculate the distance between the consecutive steps\n    strideLengthSum = 0 \n\n    heel_position = movement.getJointPosition( model , heel_joint )\n\n    lastStepPosition = None\n\n    for frameIndex in stepFrames:\n\n        currentStepPosition = heel_position[ frameIndex ]\n\n        if( lastStepPosition is None ):\n\n            lastStepPosition = currentStepPosition \n\n        else:\n\n            strideLengthSum += np.linalg.norm( currentStepPosition - lastStepPosition )\n\n    averageStrideLength = strideLengthSum / ( len( stepFrames ) - 1 )\n\n    return averageStrideLength\n\n\n\n\n\n\n\n\n\n    \n\n\n",
 			"file": "bipedal.py",
+			"file_size": 2809,
+			"file_write_time": 1438205183000000,
 			"settings":
 			{
-				"buffer_size": 2714,
+				"buffer_size": 2718,
 				"line_ending": "Windows"
 			}
 		},
@@ -463,7 +466,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -471,15 +474,15 @@
 					"file": "bipedal.py",
 					"settings":
 					{
-						"buffer_size": 2714,
+						"buffer_size": 2718,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2711,
-								2711
+								2715,
+								2715
 							]
 						],
 						"settings":
@@ -489,7 +492,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 694.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -590,8 +593,8 @@
 						"selection":
 						[
 							[
-								3274,
-								3274
+								547,
+								547
 							]
 						],
 						"settings":
