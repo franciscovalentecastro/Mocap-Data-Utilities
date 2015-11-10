@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"max",
+				"maxFreq"
+			],
+			[
+				"maxim",
+				"maximaIndex"
+			],
+			[
+				"l",
+				"linspace"
+			],
+			[
 				"mode",
 				"model_edges"
 			],
@@ -46,10 +58,6 @@
 			[
 				"min",
 				"minY"
-			],
-			[
-				"max",
-				"maxX"
 			],
 			[
 				"joi",
@@ -279,6 +287,14 @@
 			}
 		},
 		{
+			"file": "data.py",
+			"settings":
+			{
+				"buffer_size": 2948,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "bvh.py",
 			"settings":
 			{
@@ -306,13 +322,21 @@
 			}
 		},
 		{
-			"contents": "### Sesión\n\n########### Cubic spline interpolatio\n\nimport model as m\nmodelo =  m.Model( \"../sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\ndata = mov.getJointPosition( modelo , \"LeftFoot\" ) \nsignal = [ position[ 1 , 0 ] for position in data ]\n\nimport data as dt\nf = dt.cubicInterpolation( signal )\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\naxis = range( 0 , len( signal ) )\n\nx = np.linspace( 0 , len( signal ) - 1 , 10000 )\ny = f( x )\n\nplt.plot( axis, signal, 'ro', x , y , 'g-' )\nplt.show()\n\n########### Plot speed and acceleration\n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\n\nspeed = mov.getJointSpeed( modelo , \"LeftFoot\" )\nacceleration = mov.getJointAcceleration( modelo , \"LeftFoot\" )\n\nimport matplotlib.pyplot as plt\naxSpeed = range( len( speed ) )\naxAcceleration = range( len( acceleration ) )\n\nplt.plot( axSpeed , speed , 'g-')\nplt.show()\nplt.plot( axAcceleration, acceleration , \"r-\" )\nplt.show()\n\n########### Get stride length \n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport bipedal as bip\nbip.strideLength( modelo , \"LeftFoot\" ,  \"LeftToeBase\" , \"LeftToeBase_EndSite\" )\n\nimport movement as mov\nmov.jointLowestFrames( modelo , \"LeftFoot\" , 1.1 )\n\nmov.plotJointPositionCoordinate( modelo , [ \"LeftFoot\" , \"LeftToeBase\" , \"LeftToeBase_EndSite\" ] , 1 ) \n\n\n########### Get period of discrete data\n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\ndata = mov.getJointPosition( modelo , \"LeftFoot\" ) \nsignal = [ position[ 1 , 0 ] for position in data ]\n\n\nimport data as dt\ndt.getPeriod( signal , modelo.frameTime )\n\n########### Plot Local workspace and fit a surface\n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\nimport numpy as np\nimport pdb\nimport data as dt\n\ndata = mov.getJointLocalWorkspace( modelo , \"LeftFoot\" )\ndata = np.array( data )\n\ndt.quadraticSurfaceFit( data )\n\n## Forearm\n\ndata = mov.getJointLocalWorkspace( modelo , \"LeftForeArm\" )\ndata = np.array( data )\n\ndt.quadraticSurfaceFit( data )\n\n#########################\nfrom mayavi import mlab\nimport numpy as np\nimport model as m\n\nmodelo =  m.Model( \"../sample-mocap-data//05//05_01.bvh\" )\nmodelo.read()\n\n## Set frame\nmodelo.setFrame( 0 )\n\n## Get every joint coordinates in the frame\nx = np.array( [ modelo.model_position[ key ][ 0 , 0 ] for key in modelo.model_position ] ) \ny = np.array( [ modelo.model_position[ key ][ 1 , 0 ] for key in modelo.model_position ] )\nz = np.array( [ modelo.model_position[ key ][ 2 , 0 ] for key in modelo.model_position ] )\n\ns = mlab.points3d( x , y , z , color=(0 , 0 ,0), scale_factor=.5 )\n\n###############################\nimport visualization as vis\nimport numpy as np\nimport model as m\n\nmodelo =  m.Model( \"../sample-mocap-data//02//02_01.bvh\" )\nmodelo.read()\n\nvis.plotModel( modelo )\n\n\n###############################\nimport numpy as np\nimport mayavi.mlab as mlab\n\ny = np.array( 100*[ 100 * [0] ] )\nx , z = np.mgrid[ -50 : 50 , -50 : 50 ]\n\nmlab.points3d( x.flatten() , y.flatten() , z.flatten() )\n\n\n### Measure set frame\nimport model as m\nmodelo =  m.Model( \"../sample-mocap-data//02//02_01.bvh\" )\nmodelo.read()\n\nimport timeit \ntimeit.timeit( \"modelo.setFrame( 1 )\" ,  setup = \" import model as m modelo =  m.Model( \"../sample-mocap-data//02//02_01.bvh\" ) modelo.read() \" )",
+			"contents": "### Sesión\n\n########### Cubic spline interpolation\n\nimport model as m\nmodelo =  m.Model( \"../sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\ndata = mov.getJointPosition( modelo , \"LeftFoot\" ) \nsignal = [ position[ 1 , 0 ] for position in data ]\n\nimport data as dt\nf = dt.cubicInterpolation( signal )\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\naxis = range( 0 , len( signal ) )\n\nx = np.linspace( 0 , len( signal ) - 1 , 10000 )\ny = f( x )\n\nplt.plot( axis, signal, 'ro', x , y , 'g-' )\nplt.show()\n\n########### Plot speed and acceleration\n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\n\nspeed = mov.getJointSpeed( modelo , \"LeftFoot\" )\nacceleration = mov.getJointAcceleration( modelo , \"LeftFoot\" )\n\nimport matplotlib.pyplot as plt\naxSpeed = range( len( speed ) )\naxAcceleration = range( len( acceleration ) )\n\nplt.plot( axSpeed , speed , 'g-')\nplt.show()\nplt.plot( axAcceleration, acceleration , \"r-\" )\nplt.show()\n\n########### Get stride length \n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport bipedal as bip\nbip.strideLength( modelo , \"LeftFoot\" ,  \"LeftToeBase\" , \"LeftToeBase_EndSite\" )\n\nimport movement as mov\nmov.jointLowestFrames( modelo , \"LeftFoot\" , 1.1 )\n\nmov.plotJointPositionCoordinate( modelo , [ \"LeftFoot\" , \"LeftToeBase\" , \"LeftToeBase_EndSite\" ] , 1 ) \n\n\n########### Get period of discrete data\n\nimport model as m\nmodelo =  m.Model( \"../sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\ndata = mov.getJointPosition( modelo , \"LeftFoot\" ) \nsignal = [ position[ 1 , 0 ] for position in data ]\n\n\nimport data as dt\ndt.getPeriod( signal , modelo.frameTime )\n\n########### Plot Local workspace and fit a surface\n\nimport model as m\nmodelo =  m.Model( \"sample-mocap-data//05//05_01_ignoreFirstFrame.bvh\" )\nmodelo.read()\n\nimport movement as mov\nimport numpy as np\nimport pdb\nimport data as dt\n\ndata = mov.getJointLocalWorkspace( modelo , \"LeftFoot\" )\ndata = np.array( data )\n\ndt.quadraticSurfaceFit( data )\n\n## Forearm\n\ndata = mov.getJointLocalWorkspace( modelo , \"LeftForeArm\" )\ndata = np.array( data )\n\ndt.quadraticSurfaceFit( data )\n\n#########################\nfrom mayavi import mlab\nimport numpy as np\nimport model as m\n\nmodelo =  m.Model( \"../sample-mocap-data//05//05_01.bvh\" )\nmodelo.read()\n\n## Set frame\nmodelo.setFrame( 0 )\n\n## Get every joint coordinates in the frame\nx = np.array( [ modelo.model_position[ key ][ 0 , 0 ] for key in modelo.model_position ] ) \ny = np.array( [ modelo.model_position[ key ][ 1 , 0 ] for key in modelo.model_position ] )\nz = np.array( [ modelo.model_position[ key ][ 2 , 0 ] for key in modelo.model_position ] )\n\ns = mlab.points3d( x , y , z , color=(0 , 0 ,0), scale_factor=.5 )\n\n###############################\nimport visualization as vis\nimport numpy as np\nimport model as m\n\nmodelo =  m.Model( \"../sample-mocap-data//02//02_01.bvh\" )\nmodelo.read()\n\nvis.plotModel( modelo )\n\n\n###############################\nimport numpy as np\nimport mayavi.mlab as mlab\n\ny = np.array( 100*[ 100 * [0] ] )\nx , z = np.mgrid[ -50 : 50 , -50 : 50 ]\n\nmlab.points3d( x.flatten() , y.flatten() , z.flatten() )\n\n\n### Measure set frame\nimport model as m\nmodelo =  m.Model( \"../sample-mocap-data//02//02_01.bvh\" )\nmodelo.read()\n\nimport timeit \ntimeit.timeit( \"modelo.setFrame( 1 )\" ,  setup = \" import model as m modelo =  m.Model( \"../sample-mocap-data//02//02_01.bvh\" ) modelo.read() \" )",
 			"file": "/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/session_1.py",
-			"file_size": 3275,
-			"file_write_time": 1438655671000000,
+			"file_size": 3552,
+			"file_write_time": 1447049988000000,
 			"settings":
 			{
-				"buffer_size": 3550,
+				"buffer_size": 3554,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/fft_Test.py",
+			"settings":
+			{
+				"buffer_size": 877,
 				"line_ending": "Unix"
 			}
 		},
@@ -360,6 +384,9 @@
 	},
 	"file_history":
 	[
+		"/home/francisco/Documents/Programming/Programación Eficiente/Tarea 2/Pirates/pirates.cpp",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/test.py",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01_ignoreFirstFrame.bvh",
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/bvhplay/bvhplay.py",
 		"/home/francisco/Documents/Programming/ProyectoCompu/JuceLibraryCode/modules/juce_events/juce_events.cpp",
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01.bvh",
@@ -390,7 +417,6 @@
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/Example1.bvh",
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/49/49_01_ignoreFirstFrame.bvh",
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/05/05_01__ignoreFirstFrame.bvh",
-		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01_ignoreFirstFrame.bvh",
 		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/sample-mocap-data/02/02_01.bvh",
 		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/asfamc.py",
 		"/C/Users/Test/Documents/Programming/Mocap Data Utilities/bvh.py",
@@ -466,7 +492,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -499,6 +525,34 @@
 				},
 				{
 					"buffer": 1,
+					"file": "data.py",
+					"settings":
+					{
+						"buffer_size": 2948,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								135,
+								135
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "bvh.py",
 					"settings":
 					{
@@ -526,7 +580,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "model.py",
 					"settings":
 					{
@@ -537,8 +591,8 @@
 						"selection":
 						[
 							[
-								2736,
-								2736
+								4918,
+								4918
 							]
 						],
 						"settings":
@@ -547,14 +601,14 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 0.0,
-						"translation.y": 1415.0,
+						"translation.x": 3.0,
+						"translation.y": 128.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "visualization.py",
 					"settings":
 					{
@@ -582,19 +636,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/session_1.py",
 					"settings":
 					{
-						"buffer_size": 3550,
+						"buffer_size": 3554,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								547,
-								547
+								1769,
+								1769
 							]
 						],
 						"settings":
@@ -602,13 +656,39 @@
 							"syntax": "Packages/Python/Python.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 687.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
+					"file": "/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/fft_Test.py",
+					"settings":
+					{
+						"buffer_size": 877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								166,
+								166
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 37.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
 					"file": "movement.py",
 					"settings":
 					{
@@ -619,8 +699,8 @@
 						"selection":
 						[
 							[
-								834,
-								834
+								632,
+								632
 							]
 						],
 						"settings":

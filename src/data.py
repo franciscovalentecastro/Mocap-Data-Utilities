@@ -91,3 +91,24 @@ def cubicInterpolation( signal ):
     f = scipy.interpolate.interp1d( axis, signal, kind='cubic')
 
     return f
+
+def signalImportantFrequencies( signal , frameTime , filename ):
+    """ Returns a list of the most important frequencies in the signal ,
+        decreasing order of the highest amplitude. """
+
+    sp = np.fft.fft( signal )
+    freq = np.fft.fftfreq( len( signal ) , frameTime )
+    
+
+    ##directory = "/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/Walking/"
+
+    ##plt.axis( [ -20 , 20 , 0 , 400 ] )
+    ##plt.plot( freq , np.absolute( sp ) )
+    ##plt.savefig( directory + "Images/" + filename + "_LeftFoot_Z_Coordinate_FFT.png" )
+    ##plt.clf()
+
+    ## Find maxima in array
+    maximaIndex = scipy.signal.argrelmax( np.absolute( sp ) )[ 0 ]
+    maxFreq = freq[ maximaIndex ]
+
+    return maxFreq
