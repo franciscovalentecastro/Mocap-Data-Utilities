@@ -4,16 +4,36 @@
 		"selected_items":
 		[
 			[
+				"f",
+				"filename"
+			],
+			[
+				"d",
+				"directory"
+			],
+			[
+				"lis",
+				"listOfFrequenciesY"
+			],
+			[
+				"li",
+				"listOfFrequenciesY"
+			],
+			[
+				"l",
+				"listOfFrequenciesY"
+			],
+			[
+				"ma",
+				"maxFrequencies"
+			],
+			[
 				"max",
 				"maxFreq"
 			],
 			[
 				"maxim",
 				"maximaIndex"
-			],
-			[
-				"l",
-				"linspace"
 			],
 			[
 				"mode",
@@ -70,10 +90,6 @@
 			[
 				"frm",
 				"frameTime"
-			],
-			[
-				"ma",
-				"maximaIndex"
 			],
 			[
 				"aut",
@@ -290,7 +306,7 @@
 			"file": "data.py",
 			"settings":
 			{
-				"buffer_size": 2948,
+				"buffer_size": 3680,
 				"line_ending": "Unix"
 			}
 		},
@@ -333,10 +349,10 @@
 			}
 		},
 		{
-			"file": "/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/fft_Test.py",
+			"file": "fft_Test.py",
 			"settings":
 			{
-				"buffer_size": 877,
+				"buffer_size": 1313,
 				"line_ending": "Unix"
 			}
 		},
@@ -384,6 +400,11 @@
 	},
 	"file_history":
 	[
+		"/home/francisco/Documents/Programming/Programación Eficiente/Tarea 6/Journey to Greece/journey.cpp",
+		"/home/francisco/Documents/Programming/Programación Eficiente/Tarea 8/Análisis_Algoritmos",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/Walking_FrequencyData_Points.txt",
+		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/fft_Test.py",
+		"/home/francisco/Downloads/cli.cpp",
 		"/home/francisco/Documents/Programming/Programación Eficiente/Tarea 2/Pirates/pirates.cpp",
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/test.py",
 		"/home/francisco/Documents/Programming/Mocap-Data-Utilities/sample-mocap-data/02/02_01_ignoreFirstFrame.bvh",
@@ -492,7 +513,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 7,
 			"sheets":
 			[
 				{
@@ -528,15 +549,15 @@
 					"file": "data.py",
 					"settings":
 					{
-						"buffer_size": 2948,
+						"buffer_size": 3680,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								135,
-								135
+								3240,
+								3240
 							]
 						],
 						"settings":
@@ -546,7 +567,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1215.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -619,8 +640,8 @@
 						"selection":
 						[
 							[
-								1159,
-								1159
+								1962,
+								1962
 							]
 						],
 						"settings":
@@ -663,26 +684,27 @@
 				},
 				{
 					"buffer": 6,
-					"file": "/home/francisco/Documents/Programming/Mocap-Data-Utilities/misc/fft_Test.py",
+					"file": "fft_Test.py",
 					"settings":
 					{
-						"buffer_size": 877,
+						"buffer_size": 1313,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								166,
-								166
+								780,
+								780
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage"
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 37.0,
+						"translation.y": 52.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
