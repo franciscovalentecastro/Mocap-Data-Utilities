@@ -1,6 +1,6 @@
 ### Sesión
 
-########### Cubic spline interpolatio
+########### Cubic spline interpolation
 
 import model as m
 modelo =  m.Model( "../sample-mocap-data//05//05_01_ignoreFirstFrame.bvh" )
@@ -115,9 +115,9 @@ z = np.array( [ modelo.model_position[ key ][ 2 , 0 ] for key in modelo.model_po
 s = mlab.points3d( x , y , z , color=(0 , 0 ,0), scale_factor=.5 )
 
 ###############################
+import visualization as vis
 import numpy as np
 import model as m
-import visualization as vis
 
 modelo =  m.Model( "../sample-mocap-data//02//02_01.bvh" )
 modelo.read()
@@ -133,3 +133,12 @@ y = np.array( 100*[ 100 * [0] ] )
 x , z = np.mgrid[ -50 : 50 , -50 : 50 ]
 
 mlab.points3d( x.flatten() , y.flatten() , z.flatten() )
+
+
+### Measure set frame
+import model as m
+modelo =  m.Model( "../sample-mocap-data//02//02_01.bvh" )
+modelo.read()
+
+import timeit 
+timeit.timeit( "modelo.setFrame( 1 )" ,  setup = " import model as m modelo =  m.Model( "../sample-mocap-data//02//02_01.bvh" ) modelo.read() " )
